@@ -1,0 +1,15 @@
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\bin\Release\propagandaMachine.exe.config
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\bin\Release\propagandaMachine.exe
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\bin\Release\propagandaMachine.pdb
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\propagandaMachine.csprojResolveAssemblyReference.cache
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\Interop.ACTIVEXLib.dll
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\Interop.LCC11.dll
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\Interop.MsoScreenRecorderLib.dll
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\Interop.TASKLAUNCHLib.dll
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\propagandaMachine.csproj.ResolveComReference.cache
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\propagandaMachine.Properties.Resources.resources
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\propagandaMachine.Propagate.resources
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\propagandaMachine.csproj.GenerateResource.cache
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\propagandaMachine.csproj.CoreCompileInputs.cache
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\propagandaMachine.exe
+C:\Users\Kaylee.Nevin\Desktop\propProject\propagandaMachine\propagandaMachine\obj\Release\propagandaMachine.pdb
