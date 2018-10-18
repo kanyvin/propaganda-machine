@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.IO;
+using System.IO; 
 using System.Timers;
 
 
@@ -17,18 +10,24 @@ namespace propagandaMachine
     public partial class Propagate : Form
     {
         Process openBrowser = new Process();
-        string powerPointProject = @"G:\MyDrive\FactionScoreboard4-4-18.pptx";
+        string powerPointProject = @"";
         string powerPointOpener = @"C:\Program Files\Microsoft Office\Office16\POWERPNT.exe";        
-        string tinyPulse = @"https://app.tinypulse.com/engage?cheerfeed#sharing/cheer_feed?url=https%3A%2F%2Fapp.tinypulse.com%2Fapi%2Fcheers%3Factive_only%3Dtrue%26api_token%3Ddaf4e35c0eaf2489e11ab0%26organization_id%3D18876";
+        string cheers4Peers = @"https://app.tinypulse.com/engage?cheerfeed#sharing/cheer_feed?url=https%3A%2F%2Fapp.tinypulse.com%2Fapi%2Fcheers%3Factive_only%3Dtrue%26api_token%3Ddaf4e35c0eaf2489e11ab0%26organization_id%3D18876";
+        string tinyPulseStats = @"";
         string mozilla = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+        int toggle = 0; 
 
         public Propagate()
         {
             InitializeComponent();
 
+            //creating two timers in order to have a loop. Although, this could also just be solved by a loop? Anyway, two timers keep the thing going. 
             System.Timers.Timer powerPointRepeat = new System.Timers.Timer();
-            powerPointRepeat.Elapsed += new ElapsedEventHandler(runPP_Tick);
+            System.Timers.Timer browserToggle = new System.Timers.Timer();
+            powerPointRepeat.Elapsed += new ElapsedEventHandler(tmrRunPP_Tick);
+            browserToggle.Elapsed += new ElapsedEventHandler(tmrToggleBrowsers_Tick);
             powerPointRepeat.Interval = 2*60*1000;
+            browserToggle.Interval = 10*60*1000; 
         }
 
         public void startBrowser(string file, string url)
@@ -53,25 +52,66 @@ namespace propagandaMachine
             openPower.WaitForExit();
         }
 
+        private string toggleURLs(string url1, string url2)
+        {
+            if (toggle == 0)
+            {
+                toggle += 1;
+                return url1; 
+            }
+            else
+            {
+                toggle = 0;
+                return url2; 
+            }
+        }
+
         private void start_Click(object sender, EventArgs e)
         {
             stop.Enabled = true;
-            startBrowser(mozilla, tinyPulse);
+            try
+            {
+                startBrowser(mozilla, cheers4Peers);
+            }
+            catch
+            {
+                mozilla = @"C:\Program Files\Mozilla Firefox\firefox.exe";
+                startBrowser(mozilla, cheers4Peers);
+            }
             start.Enabled = false;
-            runPP.Enabled = true; 
+            tmrRunPP.Enabled = true;
+            tmrToggleBrowsers.Enabled = true; 
         }
 
         private void stop_Click(object sender, EventArgs e)
         {
-            runPP.Enabled = false;
-            killBrowser();
+            tmrRunPP.Enabled = false;
+            tmrToggleBrowsers.Enabled = false;
+            killBrowser(); 
             start.Enabled = true;
             stop.Enabled = false;
+
         }
 
-        private void runPP_Tick(object sender, EventArgs e)
+        private void tmrRunPP_Tick(object sender, EventArgs e)
         {
             startPowerPointSlideShow(powerPointOpener, powerPointProject);
+        }
+
+        private void tmrToggleBrowsers_Tick(object sender, EventArgs e)
+        {
+            killBrowser();
+            startBrowser(mozilla, toggleURLs(tinyPulseStats, cheers4Peers));
+        }
+
+        private void txtTinyPulseURL_TextChanged(object sender, EventArgs e)
+        {
+            tinyPulseStats = Path.Combine(tinyPulseStats, txtTinyPulseURL.Text);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            powerPointProject = Path.Combine(powerPointProject, txtTinyPulseURL.Text); 
         }
     }
 }
