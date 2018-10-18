@@ -15,7 +15,7 @@ namespace propagandaMachine
         string cheers4Peers = @"https://app.tinypulse.com/engage?cheerfeed#sharing/cheer_feed?url=https%3A%2F%2Fapp.tinypulse.com%2Fapi%2Fcheers%3Factive_only%3Dtrue%26api_token%3Ddaf4e35c0eaf2489e11ab0%26organization_id%3D18876";
         string tinyPulseStats = @"";
         string mozilla = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-        int toggle = 0; 
+        int toggle = 0;
 
         public Propagate()
         {
@@ -109,9 +109,15 @@ namespace propagandaMachine
             tinyPulseStats = Path.Combine(tinyPulseStats, txtTinyPulseURL.Text);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtPowerFile_Click(object sender, EventArgs e)
         {
-            powerPointProject = Path.Combine(powerPointProject, txtTinyPulseURL.Text); 
+            OpenFileDialog importSelect = new OpenFileDialog();
+
+            if (importSelect.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                txtPowerFile.Text = importSelect.FileName;    
+            }
+            powerPointProject = Path.Combine(powerPointProject, txtPowerFile.Text);
         }
     }
 }
