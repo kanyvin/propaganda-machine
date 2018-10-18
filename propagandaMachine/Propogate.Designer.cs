@@ -39,6 +39,7 @@
             this.erpBlankURL = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtPowerFile = new System.Windows.Forms.TextBox();
             this.lblPowerFile = new System.Windows.Forms.Label();
+            this.lblDisclaimer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.erpBlankURL)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,6 +128,18 @@
             this.lblPowerFile.TabIndex = 5;
             this.lblPowerFile.Text = "Click on empty box below to find Power Point File : ";
             // 
+            // lblDisclaimer
+            // 
+            this.lblDisclaimer.AutoSize = true;
+            this.lblDisclaimer.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.lblDisclaimer.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisclaimer.ForeColor = System.Drawing.Color.Gray;
+            this.lblDisclaimer.Location = new System.Drawing.Point(537, 416);
+            this.lblDisclaimer.Name = "lblDisclaimer";
+            this.lblDisclaimer.Size = new System.Drawing.Size(356, 15);
+            this.lblDisclaimer.TabIndex = 6;
+            this.lblDisclaimer.Text = "*This app will not work with any other Office version than 2016. ";
+            // 
             // Propagate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -135,6 +148,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1421, 519);
+            this.Controls.Add(this.lblDisclaimer);
             this.Controls.Add(this.lblPowerFile);
             this.Controls.Add(this.txtPowerFile);
             this.Controls.Add(this.lblTinyPulseURL);
@@ -163,6 +177,7 @@
         private System.Windows.Forms.ErrorProvider erpBlankURL;
         private System.Windows.Forms.Label lblPowerFile;
         private System.Windows.Forms.TextBox txtPowerFile;
+        private System.Windows.Forms.Label lblDisclaimer;
     }
 }
 

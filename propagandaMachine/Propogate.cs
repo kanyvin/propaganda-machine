@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO; 
 using System.Timers;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox; 
 
 
 namespace propagandaMachine
@@ -16,6 +18,9 @@ namespace propagandaMachine
         string tinyPulseStats = @"";
         string mozilla = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
         int toggle = 0;
+        FirefoxDriver driver = new FirefoxDriver();
+
+
 
         public Propagate()
         {
@@ -35,6 +40,8 @@ namespace propagandaMachine
             openBrowser.StartInfo.FileName = file;
             openBrowser.StartInfo.Arguments = string.Format(url);
             openBrowser.Start();
+            IWebElement element = driver.FindElement(By.TagName("body"));
+            element.SendKeys(OpenQA.Selenium.Keys.F11);
         }
 
         public void killBrowser()

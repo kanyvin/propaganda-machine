@@ -28,3 +28,6 @@ C:\Users\kaylee.nevin\source\repo\propaganda-machine\propagandaMachine\obj\Debug
 C:\Users\kaylee.nevin\source\repo\propaganda-machine\propagandaMachine\obj\Debug\propagandaMachine.csproj.CoreCompileInputs.cache
 C:\Users\kaylee.nevin\source\repo\propaganda-machine\propagandaMachine\obj\Debug\propagandaMachine.exe
 C:\Users\kaylee.nevin\source\repo\propaganda-machine\propagandaMachine\obj\Debug\propagandaMachine.pdb
+C:\Users\kaylee.nevin\source\repo\propaganda-machine\propagandaMachine\bin\Debug\WebDriver.dll
+C:\Users\kaylee.nevin\source\repo\propaganda-machine\propagandaMachine\bin\Debug\WebDriver.xml
+C:\Users\kaylee.nevin\source\repo\propaganda-machine\propagandaMachine\obj\Debug\propagandaMachine.csproj.CopyComplete
