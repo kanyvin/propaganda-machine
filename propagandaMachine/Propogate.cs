@@ -4,23 +4,21 @@ using System.Diagnostics;
 using System.IO; 
 using System.Timers;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox; 
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Interactions;
 
 
 namespace propagandaMachine
 {
     public partial class Propagate : Form
     {
-        Process openBrowser = new Process();
-        string powerPointProject = @"";
-        string powerPointOpener = @"C:\Program Files\Microsoft Office\Office16\POWERPNT.exe";        
-        string cheers4Peers = @"https://app.tinypulse.com/engage?cheerfeed#sharing/cheer_feed?url=https%3A%2F%2Fapp.tinypulse.com%2Fapi%2Fcheers%3Factive_only%3Dtrue%26api_token%3Ddaf4e35c0eaf2489e11ab0%26organization_id%3D18876";
-        string tinyPulseStats = @"";
-        string mozilla = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-        int toggle = 0;
-        FirefoxDriver driver = new FirefoxDriver();
-
-
+        private Process openBrowser = new Process();
+        private string powerPointProject = @"";
+        private string powerPointOpener = @"C:\Program Files\Microsoft Office\Office16\POWERPNT.exe";        
+        private string cheers4Peers = @"https://app.tinypulse.com/engage?cheerfeed#sharing/cheer_feed?url=https%3A%2F%2Fapp.tinypulse.com%2Fapi%2Fcheers%3Factive_only%3Dtrue%26api_token%3Ddaf4e35c0eaf2489e11ab0%26organization_id%3D18876";
+        private string tinyPulseStats = @"";
+        private string mozilla = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+        private int toggle = 0;
 
         public Propagate()
         {
@@ -35,24 +33,30 @@ namespace propagandaMachine
             browserToggle.Interval = 10*60*1000; 
         }
 
-        public void startBrowser(string file, string url)
+        public FirefoxDriver startBrowser(string file, string url)
         {
-            openBrowser.StartInfo.FileName = file;
-            openBrowser.StartInfo.Arguments = string.Format(url);
-            openBrowser.Start();
-            IWebElement element = driver.FindElement(By.TagName("body"));
-            element.SendKeys(OpenQA.Selenium.Keys.F11);
+//            var browserOptions = new FirefoxOptions();
+            var driver = new FirefoxDriver();
+            driver.Manage().Window.FullScreen();
+            driver.Navigate().GoToUrl(url);
+
+            return driver; 
         }
 
-        public void killBrowser()
+        public FirefoxDriver newTab(FirefoxDriver driver, string url)
         {
-            if (!openBrowser.HasExited)
-                openBrowser.CloseMainWindow();
+            
+            return driver; 
+        }
+
+        public void killBrowser(FirefoxDriver driver)
+        {
+            driver.Quit();
         }
 
         public void startPowerPointSlideShow (string ppAppfile, string ppfile)
         {
-            Process openPower = new Process();
+            var openPower = new Process();
             openPower.StartInfo.FileName = ppAppfile;
             openPower.StartInfo.Arguments = string.Format("{0} {1}", "/s", ppfile);
             openPower.Start();
@@ -94,7 +98,7 @@ namespace propagandaMachine
         {
             tmrRunPP.Enabled = false;
             tmrToggleBrowsers.Enabled = false;
-            killBrowser(); 
+            killBrowser(startBrowser()); 
             start.Enabled = true;
             stop.Enabled = false;
 
@@ -107,7 +111,7 @@ namespace propagandaMachine
 
         private void tmrToggleBrowsers_Tick(object sender, EventArgs e)
         {
-            killBrowser();
+            killBrowser(openBrowser);
             startBrowser(mozilla, toggleURLs(tinyPulseStats, cheers4Peers));
         }
 
